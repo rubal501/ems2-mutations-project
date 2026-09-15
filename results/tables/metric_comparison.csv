@@ -1,0 +1,5 @@
+metric,mean,std,min,50%,max
+global cosine distance to WT,0.00,0.00,0.00,0.00,0.00
+k0 cosine distance to WT,0.06,0.02,0.01,0.06,0.12
+k3 cosine distance to WT,0.01,0.00,0.00,0.01,0.02
+k5 cosine distance to WT,0.00,0.00,0.00,0.00,0.01

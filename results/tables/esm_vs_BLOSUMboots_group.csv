@@ -1,0 +1,4 @@
+label,n,delta_rho,ci_low,ci_high
+All mutants,228,0.014,-0.124,0.152
+Comparison DBD,76,0.346,0.129,0.556
+Hotspots,76,-0.302,-0.536,-0.046

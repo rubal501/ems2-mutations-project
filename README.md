@@ -1,20 +1,53 @@
 # TP53 ESM-2 embedding analysis — code
 
-Code supporting the final report: point mutants of the human TP53 DNA-binding
-domain are embedded with ESM-2, and WT-vs-mutant distances (global and local
-k=0/3/5) are compared against physicochemical annotations, MAVE-DB functional
-scores and BLOSUM62.
+## Introduction
+
+Estimating the functional effect of missense mutations from sequence alone
+remains a hard problem. Classical approaches such as BLOSUM62 capture aggregate
+evolutionary evidence about amino-acid substitutions but ignore the sequence
+context in which a mutation occurs, whereas protein language models (PLMs) like
+ESM-2 produce contextual per-residue embeddings. This project asks whether a
+*local* embedding representation centered on the mutated site captures missense
+effects better than a *global* representation of the whole protein, and how
+ESM-2 compares against a classic BLOSUM62 baseline.
+
+TP53 — the most frequently mutated gene in human cancer — is an ideal testbed:
+its DNA-binding domain (DBD) concentrates well-characterized mutational
+hotspots, and large-scale MAVE functional scores are available for thousands of
+variants (Giacomelli et al., MaveDB).
+
+The analysis runs in two phases: (1) a synthetic panel of 228 point mutants
+(12 DBD positions × 19 substitutions) is embedded with ESM-2, and WT–mutant
+distances are computed globally and over local windows (k=0/3/5); (2) MAVE-DB
+functional scores are integrated to test whether embedding-derived metrics
+associate with measured function, and to benchmark ESM-2 against BLOSUM62 via
+Spearman correlations and bootstrap confidence intervals.
+
+Key findings: global averaging dilutes the effect of single substitutions, while
+local (k=5) distances recover a stronger, more interpretable signal that
+correlates significantly with experimental function. ESM-2 and BLOSUM62 show no
+uniform winner: ESM-2 outperforms BLOSUM62 in the comparative DBD subset, while
+BLOSUM62 remains competitive at canonical hotspots.
+
+See [`manuscript/`](manuscript/) for the full report; this repository holds the
+code, data and results behind it.
 
 ## Layout
 
 ```
-code/
+repository/
+├── manuscript/             Typst report sources (reporte.typ, anexo.typ, references.bib)
+│   └── build/              Compiled PDFs (gitignored)
+├── notes/                  Working notes (notas.md)
+├── figures/                Figures used by the report
+├── results/
+│   ├── tables/             Generated CSV tables (pipeline outputs)
+│   └── figures/            Exported figures
 ├── requirements.txt        Python dependencies (R packages listed below)
 ├── notebooks/              Analysis narratives (run top-to-bottom)
 ├── scripts/                Standalone script export of the HF pipeline
 ├── r_analysis/             Statistical tests on the embedding-distance table
-├── data/                   Input table consumed by the R scripts
-└── results/                Exported figures
+└── data/                   Input table consumed by the R scripts
 ```
 
 ## Notebooks (`notebooks/`)
@@ -51,7 +84,16 @@ Both scripts read `../data/tp53_synthetic_mutants_embedding_metrics_annotated.cs
 
 ## Results (`results/`)
 
-- `violin_plots_k5.pdf` — k5 cosine-distance distributions by group.
+- `tables/` — generated CSV tables exported by the notebooks/scripts
+  (`metric_comparison.csv`, `compare_rank.csv`, `mannwhitney_k5_results.csv`,
+  `correlation-embedding-table.csv`, `esm_vs_BLOSUMboots_group.csv`, …).
+- `figures/violin_plots_k5.pdf` — k5 cosine-distance distributions by group.
+
+## Manuscript (`manuscript/`)
+
+- `reporte.typ` — main report; `anexo.typ` — appendix; `references.bib` —
+  bibliography. Both `.typ` files reference figures via `../figures/`.
+  Compile with `typst compile --root .. reporte.typ build/reporte.pdf` from `manuscript/`.
 
 ## Environment
 
@@ -66,5 +108,5 @@ R packages: `dplyr`, `car`, `MASS`, `ggplot2`, `effsize`
 
 - Notebooks download the TP53 sequence (UniProt `P04637`) and MAVE-DB scores at
   runtime, so they need network access.
-- Figures used by the report are stored in `../figures/`; notebook/script output
+- Figures used by the report are stored in `figures/`; notebook/script output
   paths are relative to each file's working directory.

@@ -10,3 +10,6 @@
 __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
+
+# Typst builds
+manuscript/build/

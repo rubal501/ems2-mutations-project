@@ -1,0 +1,10 @@
+Variable,n (Falso),n (Verdadero),Media (Falso),Media (Verdadero),Estad’stico U,Valor p,r Rango-Biserial,p-adj (BH),Significativo,Tama–o de efecto
+is_conservative_like,216,12,0.003413,0.001478,346,1.9614E-05,-0.7330,1.7653E-04,TRUE,large
+class_change,51,177,0.002768,0.003468,"5,953",5.2618E-04,0.3189,1.5785E-03,TRUE,moderate
+hydro_group_change,51,177,0.002768,0.003468,"5,953",5.2618E-04,0.3189,1.5785E-03,TRUE,moderate
+charge_change,108,120,0.002946,0.003640,"8,143",8.2888E-04,0.2566,1.8650E-03,TRUE,small
+aromatic_change,178,50,0.003479,0.002714,"3,468",1.7238E-02,-0.2207,3.1028E-02,TRUE,small
+introduces_glycine,217,11,0.003252,0.004474,"1,682",2.2226E-02,0.4093,3.3340E-02,TRUE,moderate
+introduces_proline,217,11,0.003244,0.004637,"1,634",3.9248E-02,0.3691,5.0462E-02,FALSE,moderate
+size_change,72,156,0.003063,0.003426,"6,380",9.9122E-02,0.1360,9.9122E-02,FALSE,small
+introduces_cysteine,217,11,0.003354,0.002466,831,8.9864E-02,-0.3037,9.9122E-02,FALSE,moderate
