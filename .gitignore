@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# R
+.RData
+.Rhistory
+.Rproj.user/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/

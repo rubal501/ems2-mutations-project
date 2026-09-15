@@ -6,7 +6,7 @@ library("ggplot2")
 
 
 
-df <- read.csv("tp53_synthetic_mutants_embedding_metrics_annotated.csv")
+df <- read.csv("../data/tp53_synthetic_mutants_embedding_metrics_annotated.csv")
 
 group_tags<- unique(df$group)
 

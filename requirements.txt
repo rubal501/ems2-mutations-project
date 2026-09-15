@@ -1,0 +1,20 @@
+# Python dependencies for the TP53 ESM-2 embedding analysis
+# Versions pinned from the notebook run outputs (Python 3.12 / Google Colab).
+# torch and fair-esm were preinstalled in that environment and their versions
+# were not recorded in the notebook outputs.
+fair-esm
+torch
+
+transformers==5.0.0
+biopython==1.87
+scikit-learn==1.6.1
+umap-learn==0.5.12
+scipy==1.16.3
+statsmodels==0.14.6
+matplotlib==3.10.0
+pandas==2.2.2
+numpy==2.0.2
+requests==2.32.4
+
+# R dependencies (r_analysis/embedding_shift_analysis.R, shift_chemical_groups.R)
+# install.packages(c("dplyr", "car", "MASS", "ggplot2", "effsize"))
